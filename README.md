@@ -1,6 +1,6 @@
 ## Summary
 
-This App is designed to build and visualise XGBoost non-linear models without coding. It is built under user interactive way and allow user to build, view and compare different XGBoost models easily. This is especially helpful if you use Emblem for GLM model as the way it set up looks similar
+This App is designed to build and visualise XGBoost non-linear models without coding. It is built under R Shiny and allows user to pre-process the data, build, visualise and compare different XGBoost models easily. This is especially useful if you are using Emblem given the similar setup for visualisation
 
 Example data used are from [https://www.kaggle.com/code/floser/glm-neural-nets-and-xgboost-for-insurance-pricing/notebook](https://www.kaggle.com/code/floser/glm-neural-nets-and-xgboost-for-insurance-pricing/notebook)
 
@@ -12,23 +12,24 @@ Example data used are from [https://www.kaggle.com/code/floser/glm-neural-nets-
 ![image](https://user-images.githubusercontent.com/97180173/175770872-9516dc39-d56b-4d16-8e9f-a3c872b171ea.png)
 
 - Data import
-    - Import the data, please note that data need to be in Rds. format. it is under development that allows other data format
-    - Data is available for viewing and summary also populated
-![image](https://user-images.githubusercontent.com/97180173/175769748-4c6bd61d-2233-4b85-a0f3-7459f67c1ea2.png)
+    - Import the data, please note that data need to be in Rds. format. Choices allowing other import formats are currently under development.
+    - Data is available for viewing and summary statistics also been populated.
+    
+    ![image](https://user-images.githubusercontent.com/97180173/175769748-4c6bd61d-2233-4b85-a0f3-7459f67c1ea2.png)
 
 
 
 - Data specification
-    - This session is to choose the factors that required  in the modelling, specify model structure and also choose the weight and label.
-    - Please note, if it is a frequency model, response should be number of claims (not claim frequency) and offset should be set as exposure!
-    - Modelling partition factor should be created prior using the app which will have 3 levels (1,2,3), 1 is training, 2 is testing (used for early stopping) and 3 is validation. it is under the development to create this in-app as an option
+    - In this session, we have the opportunities to filter factors that required in the model, specify model structure and also select the weight and label/response.
+    - Please note, if it is a frequency model or any models with skewed response, choose response to be number of claims (not claim frequency) and set offset to be exposure.
+    - Modelling partition factor should be created prior using the app which should have 3 levels (1,2,3), 1 for training, 2 for testing (used for early stopping which reduce the chances of overfitting) and 3 for validation. The option of creating partition factor in-app is currently under development
     - The structure can be saved and imported to reduce manual work in future
     
     ![image](https://user-images.githubusercontent.com/97180173/175770090-a868518a-e3bb-4bd2-a330-c0067ca9a713.png)
 
 - Data manipulation
-    - This session allows user to format the data before modelling, e.g. re-band/group categorical and numerical variables
-    - To use it, choose the feature from ‘select factor’ list and click ‘change current factor mapping’ button, it will then bring another table underneath in which you can modify the column ‘new_factor_level’, then click button ‘confirm current mapping’. Tips: you can actually copy the table to excel by click button ‘csv’, re-band in excel and copy back using button ‘paste mapping from clipboard’.
+    - This session allows user to format the data before modelling, e.g. re-band/group categorical and numerical variables to minimise data volatility. As such, pre-app data processing is not required. However, we do suggest certain levels of pre-app data processing to reduce the time spent in-app.
+    - In order to use it, choose a feature that required formatting from ‘select factor’ list and click ‘change current factor mapping’ button, it will then bring another table underneath, in which you can modify the column ‘new_factor_level’, then click button ‘confirm current mapping’. Tips: you can actually copy the table to excel by click button ‘csv’, re-band in excel (as this could be simpler than manually type the mapping one by one) and copy back using button ‘paste mapping from clipboard’. Removing the mappings also possible by click the button 'click all factor mapping'.
     - Once finished, click button 'create modelling dataset', this will then create the modelling data where categorical variables been one-hot-encodered.
     
     ![image](https://user-images.githubusercontent.com/97180173/175770293-aa3d2a98-0357-45f6-92b5-6da311235e10.png)
@@ -41,11 +42,15 @@ Example data used are from [https://www.kaggle.com/code/floser/glm-neural-nets-
 
 
 - Specify parameter:
-    - This allows user to specify the parameters for the modelling, please note, if it’s frequency model, ‘max delta step’ should be set around 0.7, this will affect the modelling result a lot.
+    - This allows user to specify the parameters for the modelling, please note, if it’s frequency model, ‘max delta step’ should be set around 0.7 given the skewed response, this will have significant impact on the model accuracy.
     - Specify the factors to included in the model from ‘Factor list’ on the left hand pane.
     - The parameters and selected factors can be saved and imported to reduce the manual work in future
     - Once happy, click ‘fit current model’
-    
+    - Tips for parameter setting
+        - Lower learning rate should be paired with higher number of trees allowing maximum model variance explained
+        - Lower value of max depth should be offset by larger number of trees
+        - For larger set of data, e.g. data with large number of rows and features, set learning rate a bit higher, e.g. >0.3 so that less trees required, vice versa.
+
     ![image](https://user-images.githubusercontent.com/97180173/175770624-a4d2f048-78e4-4c1e-8bf5-10b544d250fc.png)
 
 - Model visualisation
@@ -83,3 +88,4 @@ Future development
 - auto numeric banding
 - auto model partition
 - Import data format
+- Save the processed data
