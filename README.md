@@ -1,6 +1,6 @@
 ## Summary
 
-This App is designed to build and visualise XGBoost non-linear models without coding. It is built under R Shiny and allows user to pre-process the data, build, visualise and compare different XGBoost models easily. This is especially useful if you are using Emblem given the similar setup for visualisation
+This App is designed to build and visualise XGBoost non-linear models without coding. It is built under R Shiny and allows user to pre-process data, build, visualise and compare different XGBoost models easily. This is especially useful if you are using Emblem given the similar setup for visualisation
 
 Example data used are from [https://www.kaggle.com/code/floser/glm-neural-nets-and-xgboost-for-insurance-pricing/notebook](https://www.kaggle.com/code/floser/glm-neural-nets-and-xgboost-for-insurance-pricing/notebook)
 
