@@ -35,21 +35,6 @@ options(shiny.maxRequestSize=30*1024^2)
 
 
 
-tuning_parameter_df <- tibble::tribble(
-  ~tuning_parameter,            ~slider_name,                  ~label, ~integer_var,  ~min, ~max,
-  "tuned_max_depth",      "slider_max_depth",             "Max Depth",            1,    1L,  15L,
-  "tuned_min_child_weight",     "slider_min_weight",  "Minimum Child Weight",            1,    0L, 2000L,
-  "tuned_eta",            "slider_eta",         "Learning Rate",            0, 0.005,  0.3,
-  "tuned_subsample",      "slider_subsample",             "Subsample",            0,  0.05,    1,
-  "tuned_early_stopping", "slider_early_stopping", "Early Stopping Rounds",            1,    1L, 200L,
-  "tuned_max_delta_step",      "slider_max_delta",        "Max Delta Step",            0,     0,   10,
-  "tuned_alpha",          "slider_alpha",                 "Alpha",            0,     0,    5,
-  "tuned_lambda",         "slider_lambda",                "Lambda",            0,     0,    5,
-  "tuned_gamma",          "slider_gamma",                 "Gamma",            0,     0,    5
-)
-
-
-
 #---------------------------------------------------------------------------------------#
 # ~~ Required functions----
 #---------------------------------------------------------------------------------------#
