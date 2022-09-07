@@ -29,12 +29,18 @@ Example data used are from [https://www.kaggle.com/code/floser/glm-neural-nets-
 
 - Data manipulation
     - This session allows user to format the data before modelling, e.g. re-band/group categorical and numerical variables to minimise data volatility. As such, pre-app data processing is not required. However, we do suggest certain levels of pre-app data processing to reduce the time spent in-app.
-    - In order to use it, choose a feature that required formatting from ‘select factor’ list and click ‘change current factor mapping’ button, it will then bring another table underneath, in which you can modify the column ‘new_factor_level’, then click button ‘confirm current mapping’. Tips: you can actually copy the table to excel by click button ‘csv’, re-band in excel (as this could be simpler than manually type the mapping one by one) and copy back using button ‘paste mapping from clipboard’. Removing the mappings also possible by click the button 'click all factor mapping'.
+    - In order to use it, choose a feature that required formatting from ‘select factor’ list and click 'view/create factor mapping’ button, it will then bring another table underneath, in which you can modify the column ‘new_factor_level’, then click button ‘confirm the factor mapping’. Tips: you can actually copy the table to excel by click button ‘csv’, re-band in excel (as this could be simpler than manually type the mapping one by one) and copy back using button ‘paste mapping from clipboard’. Removing the mappings also possible by click the button 'clear all factor mapping'.
     - Once finished, click button 'create modelling dataset', this will then create the modelling data where categorical variables been one-hot-encodered.
+    - Auto banding also available for numerical variables (refer to the first chart below)
     
-    ![image](https://user-images.githubusercontent.com/97180173/175770293-aa3d2a98-0357-45f6-92b5-6da311235e10.png)
+    <img width="1666" alt="Screenshot 2022-09-07 at 18 38 42" src="https://user-images.githubusercontent.com/97180173/188945476-7e3aadd1-b375-42a6-97ee-f65f3d2f1ed3.png">
+    
+    
+    
+    
+    <img width="1679" alt="Screenshot 2022-09-07 at 18 47 43" src="https://user-images.githubusercontent.com/97180173/188945496-3845e2d8-1dc1-4701-9e0d-bfe449b4e6a2.png">
 
-    ![image](https://user-images.githubusercontent.com/97180173/175770299-792835ad-26d2-4715-81a9-05184b1a9bd5.png)
+ 
 
 ### Modelling (MODEL Tab)
 
